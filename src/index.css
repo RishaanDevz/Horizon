@@ -40,6 +40,10 @@
     to { transform: rotate(-360deg); }
 }
 
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 /* Make CyGrotesk the default font */
 body {
   font-family: 'CyGrotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;

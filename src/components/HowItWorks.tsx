@@ -38,40 +38,67 @@ const HowItWorks: React.FC = () => {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Step 1: Sense */}
-          <div className={`bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 ${
-            activeCard === 0 ? 'scale-105 border-gray-500/70 shadow-2xl' : ''
+          <div className={`relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 ${
+            activeCard === 0 
+              ? 'scale-105 border-[#3892FF]/50 shadow-2xl shadow-[#3892FF]/20' 
+              : 'border-gray-700/50 hover:border-gray-600/50'
           }`}>
-            {/* Animated gradient background */}
-            <div className={`absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 ${
-              activeCard === 0 ? 'opacity-20' : ''
-            }`} style={{
-              background: 'linear-gradient(135deg, #3892FF/20, #BE83FF/20, #E86CA0/20)',
-              backgroundSize: '200% 200%',
-              animation: activeCard === 0 ? 'gradientShift 3s ease-in-out infinite' : 'none'
-            }}></div>
+            {/* Gradient background overlay */}
+            <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
+              activeCard === 0 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#3892FF]/20 via-[#BE83FF]/10 to-transparent rounded-2xl animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#3892FF]/5 to-[#BE83FF]/15 rounded-2xl"></div>
+            </div>
             
             <div className="relative z-10">
               <div className="mb-6">
-                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
-                  <Radar className="w-6 h-6 text-white" />
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-500 ${
+                  activeCard === 0 
+                    ? 'bg-gradient-to-br from-[#3892FF] to-[#BE83FF] shadow-lg shadow-[#3892FF]/30' 
+                    : 'bg-white/10'
+                }`}>
+                  <Radar className={`w-6 h-6 transition-colors duration-500 ${
+                    activeCard === 0 ? 'text-white' : 'text-white/70'
+                  }`} />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Step 1: Understands Your World</h3>
-                <p className="text-gray-400 text-sm mb-4">Tunes into your context</p>
+                <h3 className={`text-xl font-semibold mb-2 transition-colors duration-500 ${
+                  activeCard === 0 ? 'text-white' : 'text-gray-200'
+                }`}>Step 1: Understands Your World</h3>
+                <p className={`text-sm mb-4 transition-colors duration-500 ${
+                  activeCard === 0 ? 'text-[#3892FF]' : 'text-gray-400'
+                }`}>Tunes into your context</p>
               </div>
               <div className="space-y-3">
-                <p className="text-gray-300 leading-relaxed">
+                <p className={`leading-relaxed transition-colors duration-500 ${
+                  activeCard === 0 ? 'text-gray-100' : 'text-gray-300'
+                }`}>
                   Horizon tunes into your phone's unique context—your calendar, location, and connections—to see what's happening now and anticipate what's next.
                 </p>
                 <div className="pt-4">
-                  <div className="w-full h-32 bg-gray-700/30 rounded-lg flex items-center justify-center gap-6">
-                    <Calendar className="w-6 h-6 text-white/70 animate-pulse" />
-                    <MapPin className="w-6 h-6 text-white/70 animate-pulse" style={{ animationDelay: '0.15s' }} />
-                    <Bluetooth className="w-6 h-6 text-white/70 animate-pulse" style={{ animationDelay: '0.3s' }} />
-                    <Bell className="w-6 h-6 text-white/70 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <div className={`w-full h-32 rounded-lg flex items-center justify-center gap-6 transition-all duration-500 ${
+                    activeCard === 0 
+                      ? 'bg-gradient-to-r from-[#3892FF]/20 via-[#BE83FF]/20 to-[#E86CA0]/20' 
+                      : 'bg-gray-700/30'
+                  }`}>
+                    <Calendar className={`w-6 h-6 transition-all duration-500 ${
+                      activeCard === 0 ? 'text-[#3892FF] animate-bounce' : 'text-white/70 animate-pulse'
+                    }`} />
+                    <MapPin className={`w-6 h-6 transition-all duration-500 ${
+                      activeCard === 0 ? 'text-[#BE83FF] animate-bounce' : 'text-white/70 animate-pulse'
+                    }`} style={{ animationDelay: '0.15s' }} />
+                    <Bluetooth className={`w-6 h-6 transition-all duration-500 ${
+                      activeCard === 0 ? 'text-[#E86CA0] animate-bounce' : 'text-white/70 animate-pulse'
+                    }`} style={{ animationDelay: '0.3s' }} />
+                    <Bell className={`w-6 h-6 transition-all duration-500 ${
+                      activeCard === 0 ? 'text-[#FF7A32] animate-bounce' : 'text-white/70 animate-pulse'
+                    }`} style={{ animationDelay: '0.5s' }} />
                   </div>
                   <div className="mt-3 text-center">
                     <TextShimmer 
-                      className="text-xs text-gray-400" 
+                      className={`text-xs transition-colors duration-500 ${
+                        activeCard === 0 ? 'text-[#3892FF]' : 'text-gray-400'
+                      }`}
                       duration={1.5}
                       as="div"
                     >
@@ -84,31 +111,66 @@ const HowItWorks: React.FC = () => {
           </div>
 
           {/* Step 2: Reason */}
-          <div className={`bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 ${
-            activeCard === 1 ? 'scale-105 border-gray-500/70 shadow-2xl' : ''
+          <div className={`relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 ${
+            activeCard === 1 
+              ? 'scale-105 border-[#BE83FF]/50 shadow-2xl shadow-[#BE83FF]/20' 
+              : 'border-gray-700/50 hover:border-gray-600/50'
           }`}>
+            {/* Gradient background overlay */}
+            <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
+              activeCard === 1 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#BE83FF]/20 via-[#E86CA0]/10 to-transparent rounded-2xl animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-[#BE83FF]/5 to-[#E86CA0]/15 rounded-2xl"></div>
+            </div>
+            
+            <div className="relative z-10">
             <div className="mb-6">
-              <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
-                <Brain className="w-6 h-6 text-white" />
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-500 ${
+                activeCard === 1 
+                  ? 'bg-gradient-to-br from-[#BE83FF] to-[#E86CA0] shadow-lg shadow-[#BE83FF]/30' 
+                  : 'bg-white/10'
+              }`}>
+                <Brain className={`w-6 h-6 transition-colors duration-500 ${
+                  activeCard === 1 ? 'text-white' : 'text-white/70'
+                }`} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Step 2: Privately Connects the Dots</h3>
-              <p className="text-gray-400 text-sm mb-4">On-device intelligence</p>
+              <h3 className={`text-xl font-semibold mb-2 transition-colors duration-500 ${
+                activeCard === 1 ? 'text-white' : 'text-gray-200'
+              }`}>Step 2: Privately Connects the Dots</h3>
+              <p className={`text-sm mb-4 transition-colors duration-500 ${
+                activeCard === 1 ? 'text-[#BE83FF]' : 'text-gray-400'
+              }`}>On-device intelligence</p>
             </div>
             <div className="space-y-3">
-              <p className="text-gray-300 leading-relaxed">
+              <p className={`leading-relaxed transition-colors duration-500 ${
+                activeCard === 1 ? 'text-gray-100' : 'text-gray-300'
+              }`}>
                 All processing happens securely on your device. Our AI finds patterns and predicts your needs without your data ever leaving your phone.
               </p>
               <div className="pt-4">
-                <div className="w-full h-32 bg-gray-700/30 rounded-lg flex items-center justify-center">
+                <div className={`w-full h-32 rounded-lg flex items-center justify-center transition-all duration-500 ${
+                  activeCard === 1 
+                    ? 'bg-gradient-to-r from-[#BE83FF]/20 via-[#E86CA0]/20 to-[#FF7A32]/20' 
+                    : 'bg-gray-700/30'
+                }`}>
                   <div className="relative w-24 h-24 flex items-center justify-center">
-                    <Lock className="w-8 h-8 text-white/90" />
-                    <div className="absolute w-16 h-16 border-2 border-dashed border-white/10 rounded-full"></div>
-                    <div className="absolute w-full h-full border-2 border-dashed border-white/10 rounded-full"></div>
+                    <Lock className={`w-8 h-8 transition-colors duration-500 ${
+                      activeCard === 1 ? 'text-[#BE83FF]' : 'text-white/90'
+                    }`} />
+                    <div className={`absolute w-16 h-16 border-2 border-dashed rounded-full transition-all duration-500 ${
+                      activeCard === 1 ? 'border-[#BE83FF]/50 animate-spin' : 'border-white/10'
+                    }`}></div>
+                    <div className={`absolute w-full h-full border-2 border-dashed rounded-full transition-all duration-500 ${
+                      activeCard === 1 ? 'border-[#E86CA0]/30 animate-spin' : 'border-white/10'
+                    }`} style={{ animationDirection: 'reverse', animationDuration: '3s' }}></div>
                   </div>
                 </div>
                 <div className="mt-3 text-center">
                   <TextShimmer 
-                    className="text-xs text-gray-400" 
+                    className={`text-xs transition-colors duration-500 ${
+                      activeCard === 1 ? 'text-[#BE83FF]' : 'text-gray-400'
+                    }`}
                     duration={1.2}
                     as="div"
                   >
@@ -117,26 +179,50 @@ const HowItWorks: React.FC = () => {
                 </div>
               </div>
             </div>
+            </div>
           </div>
 
           {/* Step 3: Act */}
-          <div className={`bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 md:col-span-2 lg:col-span-1 ${
-            activeCard === 2 ? 'scale-105 border-gray-500/70 shadow-2xl' : ''
+          <div className={`relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 md:col-span-2 lg:col-span-1 ${
+            activeCard === 2 
+              ? 'scale-105 border-[#FF7A32]/50 shadow-2xl shadow-[#FF7A32]/20' 
+              : 'border-gray-700/50 hover:border-gray-600/50'
           }`}>
+            {/* Gradient background overlay */}
+            <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
+              activeCard === 2 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E86CA0]/20 via-[#FF7A32]/10 to-transparent rounded-2xl animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-[#FF7A32]/5 to-[#E86CA0]/15 rounded-2xl"></div>
+            </div>
+            
+            <div className="relative z-10">
             <div className="mb-6">
-              <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-white" />
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-500 ${
+                activeCard === 2 
+                  ? 'bg-gradient-to-br from-[#E86CA0] to-[#FF7A32] shadow-lg shadow-[#FF7A32]/30' 
+                  : 'bg-white/10'
+              }`}>
+                <Zap className={`w-6 h-6 transition-colors duration-500 ${
+                  activeCard === 2 ? 'text-white' : 'text-white/70'
+                }`} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Step 3: Surfaces the Perfect Action</h3>
-              <p className="text-gray-400 text-sm mb-4">Cards & actions</p>
+              <h3 className={`text-xl font-semibold mb-2 transition-colors duration-500 ${
+                activeCard === 2 ? 'text-white' : 'text-gray-200'
+              }`}>Step 3: Surfaces the Perfect Action</h3>
+              <p className={`text-sm mb-4 transition-colors duration-500 ${
+                activeCard === 2 ? 'text-[#FF7A32]' : 'text-gray-400'
+              }`}>Cards & actions</p>
             </div>
             <div className="space-y-3">
-              <p className="text-gray-300 leading-relaxed">
+              <p className={`leading-relaxed transition-colors duration-500 ${
+                activeCard === 2 ? 'text-gray-100' : 'text-gray-300'
+              }`}>
                 Forget searching. Horizon delivers the right information at the right moment, with one-tap buttons to join a call, track a package, or play your music.
               </p>
               <div className="pt-4">
                 <div className={`transition-all duration-500 ${
-                  activeCard === 2 ? 'animate-pulse' : ''
+                  activeCard === 2 ? 'transform scale-105' : ''
                 }`}>
                   <NotificationCard 
                     title="Team Standup"
@@ -146,6 +232,7 @@ const HowItWorks: React.FC = () => {
                   />
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

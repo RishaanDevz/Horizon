@@ -1,0 +1,67 @@
+.curved-loop-jacket {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: -10vh;
+}
+
+.curved-loop-svg {
+  user-select: none;
+  width: 100%;
+  aspect-ratio: 100 / 12;
+  overflow: visible;
+  display: block;
+  font-size: 6rem;
+  fill: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.straight-marquee-jacket {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.straight-marquee {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+  font-family: 'CyGrotesk', ui-sans-serif, system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #ffffff !important;
+}
+
+@media (min-width: 768px) {
+  .straight-marquee {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .straight-marquee {
+    font-size: 3rem;
+  }
+}
+
+.marquee-content {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Keyframes removed as animation is no longer used */

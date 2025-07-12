@@ -160,10 +160,10 @@ const HowItWorks: React.FC = () => {
                     }`} />
                     <div className={`absolute w-16 h-16 border-2 border-dashed rounded-full transition-all duration-500 ${
                       activeCard === 1 ? 'border-[#BE83FF]/50 animate-spin' : 'border-white/10'
-                    }`}></div>
+                    }`} style={{ animationDuration: activeCard === 1 ? '4s' : undefined }}></div>
                     <div className={`absolute w-full h-full border-2 border-dashed rounded-full transition-all duration-500 ${
                       activeCard === 1 ? 'border-[#E86CA0]/30 animate-spin' : 'border-white/10'
-                    }`} style={{ animationDirection: 'reverse', animationDuration: '3s' }}></div>
+                    }`} style={{ animationDirection: 'reverse', animationDuration: activeCard === 1 ? '6s' : undefined }}></div>
                   </div>
                 </div>
                 <div className="mt-3 text-center">
